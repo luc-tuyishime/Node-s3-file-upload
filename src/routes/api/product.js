@@ -1,14 +1,14 @@
 import { Router } from 'express';
 import errorHandlerAsync from '../../middlewares/errorHandler';
 import ProductController from '../../controllers/ProductController';
-import * as helper from '../../helpers';
+import * as middleware from '../../middlewares';
 
 const router = Router();
 
 // Create Product
 router.post(
   '/products',
-  helper.upload.array('images', 5),
+  middleware.upload.array('images', 5),
   errorHandlerAsync(ProductController.create)
 );
 
